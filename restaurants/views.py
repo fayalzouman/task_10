@@ -51,7 +51,8 @@ def restaurant_list(request):
 
 def restaurant_detail(request, restaurant_id):
     context = {
-        "restaurant": Restaurant.objects.get(id=restaurant_id)
+        "item" : Item.objects.all(),
+        "restaurants": Restaurant.objects.get(id=restaurant_id)
     }
     return render(request, 'detail.html', context)
 
@@ -80,7 +81,7 @@ def item_create(request):
             return redirect('restaurant-detail')
 
     context = {
-        "form":form,
+        "form": form
     }
     return render(request, 'item_create.html', context)
 
